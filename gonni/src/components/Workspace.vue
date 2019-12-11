@@ -1,18 +1,26 @@
 <template>
-    <main role="main" class="col-md-9 ml-sm-auto col-lg-10">
-          <div class="justify-content-between flex-wrap flex-md-nowrap align-items-center ">
+    <main role="main">
+          <div class="justify-content-between align-items-center ">
             <router-view />
           </div>
     </main>
 </template>
 
 <script>
-import CadastrarUsuario from './CadastrarUsuario'
-import Buscar from './Buscar'
+import CadastrarCliente from './CadastrarCliente'
+import CadastrarSorvete from './CadastrarSorvete'
+import BuscarCliente from './BuscarCliente'
+import BuscarSorvete from './BuscarSorvete'
+import VenderSorvete from './VenderSorvete'
+import Home from './Home'
 export default {
   components: {
-    CadastrarUsuario,
-    Buscar,
+    CadastrarCliente,
+    BuscarCliente,
+    BuscarSorvete,
+    Home,
+    CadastrarSorvete,
+    VenderSorvete,
   }
 }
 </script>

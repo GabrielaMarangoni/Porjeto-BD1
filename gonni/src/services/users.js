@@ -1,16 +1,19 @@
 import { http } from './config'
 
 export default {
-  listar: (nome) => {
-    return http.get('usuarios' + '/' + nome)
+  listar: () => {
+    return http.get('api/users')
   },
-  salvar: (user) => {
-    return http.post('api/users', user)
+  cadastrar: (user) => {
+    return http.post('api/users/actions/cadastrar', user)
   },
-  excluir: (id) => {
-    return http.delete('usuarios', id)
+  excluir: (user) => {
+    return http.post('api/users/actions/excluir', user)
   },
   editar: (user) => {
-    return http.put('usuarios', user)
-  }
+    return http.post('api/users/actions/editar', user)
+  },
+  buscar: (nome) => {
+    return http.post('api/users/actions/buscar', nome)
+  },
 }

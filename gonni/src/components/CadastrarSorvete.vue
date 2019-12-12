@@ -1,7 +1,7 @@
 <template>
     <div>
         <h1>Cadastro Sorvete</h1>
-        <form  @submit="btnCadastrarSorvete" class="form" method="post">
+        <form @submit.prevent="btnCadastrarSorvete" class="form">
             <input type="text" name="sabor" id="inputSabor" class="form-control" placeholder="Sabor *" pattern="[a-zA-Z \s]+$" required autofocus>
             <br>
              <div class="row">

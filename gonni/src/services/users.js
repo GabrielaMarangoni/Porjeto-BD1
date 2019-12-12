@@ -16,4 +16,10 @@ export default {
   buscar: (nome) => {
     return http.post('api/users/actions/buscar', nome)
   },
+  relatorio01: () => {
+    return http.get('api/users/actions/relatorio01')
+  },
+  top3: () => {
+    return http.get('api/users/actions/top3')
+  },
 }

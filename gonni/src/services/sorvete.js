@@ -16,4 +16,7 @@ export default {
   buscar: (sabor) => {
     return http.post('api/sorvete/actions/buscar', sabor)
   },
+  top3: (sabor) => {
+    return http.get('/api/users/actions/top3Sorvetes')
+  },
 }

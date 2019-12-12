@@ -30,8 +30,9 @@
 
       <button class="dropdown-btn">Relatórios</button>
       <div class="dropdown-container">
-        <router-link to="/buscar" style="font-size: 16px;">Relatório Cliente</router-link>
-        <router-link to="/buscar" style="font-size: 16px;">Relatório Sorvete</router-link>
+        <router-link to="/relatoriocliente01" style="font-size: 16px;">Relatório Cliente</router-link>
+        <router-link to="/relatoriotop3" style="font-size: 16px;">Top 3 Clientes</router-link>
+        <router-link to="/relatoriotop3sorvetes" style="font-size: 16px;">Top 3 Sorvetes</router-link>
       </div>
 
       

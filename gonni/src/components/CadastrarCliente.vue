@@ -1,7 +1,7 @@
 <template>
     <div>
         <h1>Cadastro de Cliente</h1>
-        <form  @submit="btnCadastrar" class="form" method="post">
+        <form @submit.prevent="btnCadastrarCliente" class="form">
             <input type="text" name="nome" id="inputNome" class="form-control" placeholder="Nome *" pattern="[a-zA-Z \s]+$" required autofocus>
             <br>
              <div class="row">
@@ -37,19 +37,17 @@ export default {
               telefone: '',
               endereco: '',
               email: '',
-              pass1: ''
             },
         }
     },
     methods: {
-      btnCadastrar () {
+      btnCadastrarCliente () {
         this.obj_user.nome = document.getElementById('inputNome').value;
         this.obj_user.cpf = document.getElementById('inputCPF').value;
         this.obj_user.telefone = document.getElementById('inputTelefone').value;
         this.obj_user.endereco = document.getElementById('inputEndereco').value;
         this.obj_user.email = document.getElementById('inputEmail').value;
-        this.obj_user.pass1 = document.getElementById("inputSenha1").pass1;
-
+        console.log("S");
 
         User.cadastrar(JSON.stringify(this.obj_user)).then(resposta => {
           alert('Cadastrado com sucesso')

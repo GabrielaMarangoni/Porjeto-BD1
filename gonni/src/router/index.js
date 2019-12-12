@@ -7,6 +7,9 @@ import BuscarCliente from '@/components/BuscarCliente'
 import BuscarSorvete from '@/components/BuscarSorvete'
 import VenderSorvete from '@/components/VenderSorvete'
 import Home from '@/components/Home'
+import RelatorioCliente01 from '@/components/RelatorioCliente01'
+import RelatorioTop3 from '@/components/RelatorioTop3'
+import RelatorioTop3Sorvetes from '@/components/RelatorioTop3Sorvetes'
 
 
 Vue.use(Router)
@@ -43,6 +46,21 @@ export default new Router({
           path: 'vendersorvete',
           name: 'vendersorvete',
           component: VenderSorvete
+        },
+        {
+          path: 'relatoriocliente01',
+          name: 'relatoriocliente01',
+          component: RelatorioCliente01
+        },
+        {
+          path: 'relatoriotop3',
+          name: 'relatoriotop3',
+          component: RelatorioTop3
+        },
+        {
+          path: 'relatoriotop3sorvetes',
+          name: 'relatoriotop3sorvetes',
+          component: RelatorioTop3Sorvetes
         },
         {
           path: 'home',

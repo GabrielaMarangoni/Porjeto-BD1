@@ -7,7 +7,7 @@
                  <h4>Cliente da Compra:</h4>
                 </div>
                 <div class="col-md-10">
-                 <select class="form-control" placeholder="Sabor *" id="inputnome" required autofocus>
+                 <select class="form-control" placeholder="Cliente *" id="inputnome" required autofocus>
                     <option  v-for="(res2) in usuarios_cadastrados" :key="res2.id">{{res2.cpf}}</option>
                   </select>
                 </div>
@@ -23,10 +23,7 @@
                     <option>Chocolate</option>
                     <option>Milho-Verde</option>
                     <option>Maracuja</option>
-                    <option>Morango</option>
                     <option>Manga</option>
-                    <option>Uva</option>
-                    <option>Limao</option>
                   </select>
                 </div>
                 <div class="col-md-3">
@@ -81,6 +78,7 @@
 <script>
 import User from '../services/users.js'
 import Vendas from '../services/vendas.js'
+import axios from 'axios'
 export default {
     data(){
         return {
@@ -89,6 +87,14 @@ export default {
             modalVisible: false,
             modalData: '',
             valorTotal: 0,
+            quantidadeTotal: 0,
+            obj_venda:{
+              str_sabores: '',
+              str_quantidade: '',
+              str_cpf: '',
+              str_quantidadeTotal: '',
+              str_valorTotal: '',
+            },
         }
     },
     mounted () {
@@ -108,25 +114,27 @@ export default {
         p.quantidade = document.getElementById('inputquantidade').value;
         p.valorparcial =  parseFloat(document.getElementById('inputquantidade').value) *  parseFloat("1.5");
         this.valorTotal = parseFloat(this.valorTotal) + parseFloat(p.valorparcial);
+        this.quantidadeTotal = parseFloat(this.quantidadeTotal) + parseFloat(p.quantidade);
         this.pedidos =  this.pedidos.concat(p);
-        console.log(this.pedidos)
+
+        this.obj_venda.str_sabores = this.obj_venda.str_sabores + ',' + document.getElementById('inputsabor').value;
+        this.obj_venda.str_quantidade = this.obj_venda.str_quantidade + ',' + parseFloat(document.getElementById('inputquantidade').value);
       },
       btnCancelar () {
         location.reload();
       },
+      
       btnConcluir (){
-        var obj_pedido = new Object();
-        obj_pedido.cpf = document.getElementById('inputnome').value;
-        obj_pedido.pedidos = this.pedidos;
-        console.log(obj_pedido);
-        Vendas.vender(JSON.stringify(obj_pedido)).then(resposta => {
-          alert('Pedido Concluido')
-          //window.location.href = 'http://localhost:8080/home';
-        }).catch(function (error) {
-          console.log(error)
-          alert('Erro, Base não Conectada')
-        })
-      }
+      this.obj_venda.str_cpf = document.getElementById('inputnome').value;
+      this.obj_venda.str_quantidadeTotal = this.quantidadeTotal;
+      this.obj_venda.str_valorTotal = this.valorTotal;
+      axios.post('http://localhost:3000/api/vendas', JSON.stringify(this.obj_venda), // the data to post
+        { headers: {
+          'Content-type': 'application/x-www-form-urlencoded',
+          }
+        }).then(response => 
+        alert("Pedido Finalizado")
+        );}
     },
   }
 

@@ -179,14 +179,14 @@ export default {
         })
       },
       btnEditar () {
-        this.obj_user.nome = document.getElementById('inputNome').value;
-        this.obj_user.cpf = document.getElementById('inputCPF').value;
-        this.obj_user.telefone = document.getElementById('inputTelefone').value;
-        this.obj_user.endereco = document.getElementById('inputEndereco').value;
-        this.obj_user.email = document.getElementById('inputEmail').value;
+        this.obj_sorvete.nome = document.getElementById('inputNome').value;
+        this.obj_sorvete.cpf = document.getElementById('inputCPF').value;
+        this.obj_sorvete.telefone = document.getElementById('inputTelefone').value;
+        this.obj_sorvete.endereco = document.getElementById('inputEndereco').value;
+        this.obj_sorvete.email = document.getElementById('inputEmail').value;
 
 
-        User.editar(JSON.stringify(this.obj_user)).then(resposta => {
+        User.editar(JSON.stringify(this.obj_sorvete)).then(resposta => {
           alert('Editado com sucesso')
         }).catch(function (error) {
           console.log(error)
